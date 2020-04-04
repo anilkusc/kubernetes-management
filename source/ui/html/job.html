@@ -1,0 +1,40 @@
+{{template "base" .}}
+{{define "context" }}
+
+<div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0">
+        <thead>
+        <tr>
+          <th>Job Name</th>
+          <th>ImageName</th>
+          <th>PullPolicy</th>
+          <th>Image Name</th>
+          <th>Active</th>
+          <th>StartTime</th>          
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {{range .}}
+        <tr>
+          <td><a href="#">{{ .JobName }}</a></td>
+          <td>{{ .ImageName }}</td>
+          <td>{{ .PullPolicy }} </td>                 
+          <td>{{ .ImageName }}</td>
+          <td>{{ .Active }}</td>
+          <td>{{ .StartTime }}</td>                    
+          <td><a href="/JobDelete?jobName={{ .JobName }}">Delete</a></td>
+        </tr>
+        {{end}}
+
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+    {{end}}

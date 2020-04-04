@@ -1,0 +1,31 @@
+{{template "base" .}}
+{{define "context" }}
+
+<div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0">
+        <thead>
+        <tr>
+          <th>Node Name</th>
+          <th>IP Address</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {{range .}}
+        <tr>
+          <td><a href="/GetNodeLog?nodeName={{ .NodeName }}">{{ .NodeName }}</a></td>
+          <td>{{ .IP }}</a></td>
+          <td><a href="#">Action</a></td>
+        </tr>
+        {{end}}
+
+        </tbody>
+
+      </table>
+    </div>
+    <!-- /.table-responsive -->
+  </div>
+
+    {{end}}

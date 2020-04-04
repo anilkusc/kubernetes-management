@@ -1,0 +1,163 @@
+{{template "base" .}}
+{{define "context" }}
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title"><strong>Labels</strong></h5>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="display: block;">
+                {{ .Label }}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title"><strong>Capacity</strong></h5>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  
+                </div>
+              </div>
+              
+              <div class="card-body" style="display: block;">
+                {{ .Capacity }}
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title"><strong>Conditions</strong></h5>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="display: block;">
+                {{ .Conditions }}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title"><strong>Node Info</strong></h5>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  
+                </div>
+              </div>
+              
+              <div class="card-body" style="display: block;">
+                {{ .Info }}
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title"><strong>Images</strong></h5>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  
+                </div>
+              </div>
+              
+              <div class="card-body" style="display: block;">
+                {{ .Images }}
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title"><strong>All</strong></h5>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  
+                </div>
+              </div>
+              
+              <div class="card-body" style="display: block;">
+                {{ .NodeInfo }}
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </div>      
+
+  </section>
+{{end}}

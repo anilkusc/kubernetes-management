@@ -1,0 +1,51 @@
+{{template "base" .}}
+{{define "context" }}
+
+<div class="container-fluid">
+            
+
+    <div>
+    
+        <!-- /.card-header -->
+        <div class="card-body">
+          <!-- Conversations are loaded here -->
+          
+        
+        <div class="card-footer">
+          <form role="form" action="/Create">
+              <div style="height: 520px;" class="direct-chat-messages"><div>
+              <div>
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>YAML</label>
+                  <textarea class="form-control" rows="3" placeholder="Insert Yaml Here ..." style="margin-top: 0px; margin-bottom: 0px; height: 450px;" name="yaml"></textarea>
+                </div>
+              </div>
+              
+            </div>
+        
+          </div>
+            <div class="input-group">
+              
+              <span class="input-group-append">
+                <button type="submit" class="btn btn-primary">Apply</button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <!-- /.card-footer-->
+        </div></div>
+    
+                                 
+    
+                  <!-- <a href="/UpdateImage">Güncelle</a>-->
+    
+                </div>
+
+    {{end}}
+
+       
+
+
+
+                         

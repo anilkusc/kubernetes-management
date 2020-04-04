@@ -1,0 +1,53 @@
+{{template "base" .}}
+{{define "context" }}
+
+<div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0">
+        <thead>
+        <tr>
+          <th>Deployment Name</th>
+          <th>Image Name</th>
+          <th>Replica Count</th>
+          <th>PullPolicy</th>
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {{range .}}
+        <tr>
+          <td><a href="/GetDeploymentLog?deploymentName={{ .DeploymentName }}">{{ .DeploymentName }}</a></td>
+          <td>{{ .ImageName }}</td>
+          <td>{{ .ReplicaCount }}</a></td>
+          <td>
+                  
+                  <ul class="nav nav-pills ml-auto p-2">
+
+                    <li class="nav-item dropdown">
+                      
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        {{ .PullPolicy }}  <span class="caret"></span>
+                      </a>
+                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-5px, 40px, 0px);">
+                        <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=deployment&name={{ .DeploymentName }}&policy=IfNotPresent">IfNotPresent</a>
+                        <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=deployment&name={{ .DeploymentName }}&policy=Always">Always </a>
+                        <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=deployment&name={{ .DeploymentName }}&policy=Never">Never </a>
+                      </div>
+                    </li>
+                  </ul>
+
+        </td>
+          <td><a href="/UpdateImage?imageName={{.ImageName}}">Update </a>  <strong> | </strong> <a href="/Scale?Kind=Deployment&Name={{ .DeploymentName }}&Operation=decrease"> - </a> <strong> | </strong> <a href="/Scale?Kind=Deployment&Name={{ .DeploymentName }}&Operation=increase"> + </a> </td>
+        </tr>
+        {{end}}
+
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+    {{end}}

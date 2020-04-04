@@ -1,0 +1,109 @@
+{{template "base" .}}
+{{define "context" }}
+
+<div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0">
+        <thead>
+        <tr>
+          <th>Cronjob Name</th>
+          <th>Scheduler</th>
+          <th>Suspend</th>
+          <th>Image Name</th>
+          <th>Pull Policy</th>
+          <th>Last Scheduled</th>
+          <th>History</th>          
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {{range .}}
+        <tr>
+          <td><a href="#">{{ .CronjobName }}</a></td>
+          <td>{{ .Scheduler }} <a data-toggle="dropdown" href="#" aria-expanded="true" >(Change)</a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><strong><b>!CHECK KUBERNETES CLUSTER TIMEZONE!<br>FOR BEING SURE SCHDULING TIME</b></strong></span>
+            <div class="dropdown-divider"></div>
+            <form action="/ChangeScheduler" role="form">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Cron Scheduler</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Cron" name="schedule" >
+                  <input type="hidden" id="exampleInputEmail1" name="name" value="{{ .CronjobName }}">
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Schedule</button>
+              </div>
+            </form>
+          </div>             
+        </td>
+          <td>
+          
+            <ul class="nav nav-pills ml-auto p-2">
+
+              <li class="nav-item dropdown">
+                
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                  {{ .Suspend }}  <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-5px, 40px, 0px);">
+                  <a class="dropdown-item" tabindex="-1" href="/ChangeSuspend?cronjobName={{ .CronjobName }}&suspend=true">True</a>
+                  <a class="dropdown-item" tabindex="-1" href="/ChangeSuspend?cronjobName={{ .CronjobName }}&suspend=false">False</a>
+                </div>
+              </li>
+            </ul>
+         
+          </td>  
+
+          <td>{{ .ImageName }}</td>
+          <td>
+                  
+            <ul class="nav nav-pills ml-auto p-2">
+
+              <li class="nav-item dropdown">
+                
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                  {{ .PullPolicy }}  <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-5px, 40px, 0px);">
+                  <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=cronjob&name={{ .CronjobName }}&policy=IfNotPresent">IfNotPresent</a>
+                  <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=cronjob&name={{ .CronjobName }}&policy=Always">Always </a>
+                  <a class="dropdown-item" tabindex="-1" href="/PolicyChanger?kind=cronjob&name={{ .CronjobName }}&policy=Never">Never </a>
+                </div>
+              </li>
+            </ul>
+
+  </td>          
+          <td>{{ .LastSchedule }}</td>          
+          <td>{{ .History }} <a data-toggle="dropdown" href="#" aria-expanded="true" >(Change)</a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <div class="dropdown-divider"></div>
+              <form action="/CronJobHistory" role="form">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">CronJob History Changer</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter History Limit" name="history" >
+                    <input type="hidden" id="exampleInputEmail1" name="name" value="{{ .CronjobName }}">
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Change</button>
+                </div>
+              </form>
+            </div>  
+          </td>                    
+          <td><a href="/CronJobStart?cronjobName={{ .CronjobName }}">Start</a> | <a href="/UpdateImage?imageName={{.ImageName}}">Update </a></td> 
+        </tr>
+        {{end}}
+
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+    {{end}}
